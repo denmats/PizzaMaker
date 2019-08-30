@@ -1,4 +1,3 @@
-# PizzaMaker
 Assignment:
 
 Create a console app "Pizzeria Palermo". The app permits to order custom pizzas. Making your own custom pizza you may to rename your pizza, choose base of pizza: -"Standard" or open pizza; -"NY" (New York type) or closed pizza; Also you may to set number of pizzas you want to order. There must be a possibility to change the ordered quantity
