@@ -9,14 +9,14 @@ There are some constraints: 1.You may to order up 10 pizzas at once; 2.The lengt
 Stage I: Class Pizza includes pizza's name, ordered quantity, a set of ingredients (this set must be empty at the beginning) Create other necessary classes as well.
 
 There are only 8 ingredients available to order at this moment:
-TOMATO_PASTE	1,00 €
-SALAMI	1,50 €
-PEPPER	0,60 €
-OLIVES	0,50 €
-GARLIC	0,30 €
-CORN	0,70 €
-CHEESE	1,00 €
-BACON	1,20 €
+[1] TOMATO_PASTE	1,00 €
+[2] SALAMI	1,50 €
+[3] PEPPER	0,60 €
+[4] OLIVES	0,50 €
+[5] GARLIC	0,30 €
+[6] CORN	0,70 €
+[7] CHEESE	1,00 €
+[8] BACON	1,20 €
 
 After creating order need to be displayed short information about it.
 [Order number: Client number: Pizza's name: Amount of ordered pizza]
