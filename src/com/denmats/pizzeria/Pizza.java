@@ -201,4 +201,29 @@ public class Pizza {
                 +"Pizza's price: "+ NumberFormat.getCurrencyInstance(Locale.GERMANY).format(getTotalPizzasPrice())+"\n"
                 +"Quantity: " + numberOfPizza + "\n";
     }
-}
+
+
+    //Inside class Base
+    private static class Base {
+        private String name;
+        private double price;
+
+        Base() {
+            this.name = "Pizza(Base)";
+            this.price = 1.0;
+        }
+
+        double getPrice() {
+            return price;
+        }
+
+        void setNYBasePrice() {
+            this.price = 1.5;
+        }
+
+        @Override
+        public String toString() {
+            return name + "\t" + NumberFormat.getCurrencyInstance(Locale.GERMANY).format(price);
+        }
+    }//End of class Base
+}//End of class Pizza

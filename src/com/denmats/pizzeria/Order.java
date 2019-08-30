@@ -15,8 +15,8 @@ public class Order {
     private Scanner scanner = new Scanner(System.in);
 
     Order(){
-        ORDER_NUM = 9999+(int)(Math.round(Math.random()*(99999-9999)));
-        CLIENT_NUM = 999+(int)(Math.round(Math.random()*(9999-999)));
+        ORDER_NUM = 10_000+(int)(Math.round(Math.random()*(100_000-10_001)));//89_999 -> min 10_000 , max 99_999
+        CLIENT_NUM = 1_000+(int)(Math.round(Math.random()*(10_000-1_001)));//8_999-> min 1_000 , max 9_999
         listOfPizzas = new ArrayList<>();
         pizzaCounter = 0;
         addNewPizza();
