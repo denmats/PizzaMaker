@@ -27,8 +27,9 @@ public class OrderLab {
                 System.out.println("*************");
                 orders.add(order);
             }else {
-                displayResults(orders);
-                putResultsIntoDB(orders);
+                displayResults(orders); //show results in console
+                putResultsIntoDB(orders); //write down results into mysql database
+                new JTableForResults(); //display results in JTable
                 isNewOrder = false;
             }
         }
