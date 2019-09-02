@@ -22,7 +22,7 @@ public class Order {
         addNewPizza();
     }
 
-    private int getORDER_NUM() {
+    int getORDER_NUM() {
         return ORDER_NUM;
     }
 
