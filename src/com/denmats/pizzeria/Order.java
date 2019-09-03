@@ -1,5 +1,6 @@
 package com.denmats.pizzeria;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -9,6 +10,7 @@ public class Order {
     private final int CLIENT_NUM;
     private ArrayList<Pizza> listOfPizzas;
     private double totalOrderPrice = 0;
+    private LocalDateTime now;
 
     static int pizzaCounter;
 
@@ -17,6 +19,7 @@ public class Order {
     Order(){
         ORDER_NUM = 10_000+(int)(Math.round(Math.random()*(100_000-10_001)));//89_999 -> min 10_000 , max 99_999
         CLIENT_NUM = 1_000+(int)(Math.round(Math.random()*(10_000-1_001)));//8_999-> min 1_000 , max 9_999
+        now = LocalDateTime.now();
         listOfPizzas = new ArrayList<>();
         pizzaCounter = 0;
         addNewPizza();
@@ -29,6 +32,8 @@ public class Order {
     int getCLIENT_NUM() {
         return CLIENT_NUM;
     }
+
+    LocalDateTime getOrderDate(){return now; }
 
     ArrayList<Pizza> getListOfPizzas() {
         return listOfPizzas;
@@ -54,11 +59,8 @@ public class Order {
     }
 
     private void displayInfo(Pizza pizza){
-        String[] orderInfo = new String[4];
-        orderInfo[0] = String.valueOf(getORDER_NUM());
-        orderInfo[1] = String.valueOf(getCLIENT_NUM());
-        orderInfo[2] = pizza.getNameOfPizza();
-        orderInfo[3] = String.valueOf(pizza.getNumOfPizza());
+        Object[] orderInfo =
+                new Object[]{getORDER_NUM(),getCLIENT_NUM(),pizza.getNumOfPizza(),pizza.getNumOfPizza(),getOrderDate()};
 
         System.out.println(Arrays.toString(orderInfo));
     }

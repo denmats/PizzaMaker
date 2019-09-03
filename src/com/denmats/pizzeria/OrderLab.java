@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.sql.*;
 
+
 public class OrderLab {
     private static Scanner scanner = new Scanner(System.in);
 
@@ -15,7 +16,6 @@ public class OrderLab {
     }
 
     public static void main(String[] args) {
-       // displayGreetings();
         ArrayList<Order> orders = new ArrayList<>();
         boolean isNewOrder = true;
         while (isNewOrder){
@@ -54,7 +54,7 @@ public class OrderLab {
     }
 
     private static void putResultsIntoDB(ArrayList<Order> orders){
-        String url = "jdbc:mysql://localhost/pizzeria?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String url = "jdbc:mysql://localhost/pizzeria?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String uname = "root";
         String pass = "1234";
 
@@ -73,9 +73,13 @@ public class OrderLab {
                     String pizza_name = order.getListOfPizzas().get(i).getNameOfPizza().toUpperCase();
                     int pizza_quantity = order.getListOfPizzas().get(i).getNumOfPizza();
 
+                    Timestamp sqlNow = Timestamp.valueOf(order.getOrderDate());
+
+
                     statement.executeUpdate("INSERT INTO `orders`(" +
-                            "id, order_num, client_num, pizza_name, pizza_quantity) values (" +
-                            "null, '"+order_num+"', '"+client_num+"','"+pizza_name+"','"+pizza_quantity+"')");
+                            "id, order_num, client_num, pizza_name, pizza_quantity, order_date) values (" +
+                            "null, '"+order_num+"', '"+client_num+"','"+pizza_name+"','"+pizza_quantity+"'" +
+                            ",'"+sqlNow+"')");
                 }
             }
 

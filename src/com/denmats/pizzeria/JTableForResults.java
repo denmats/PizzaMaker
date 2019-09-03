@@ -7,16 +7,34 @@ import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.sql.*;
 
+
 class JTableForResults extends JFrame {
 
     private static Object[][] databaseResults = null;
-    private static Object[] columns = {"ID","Order Number","Client Number","Pizza Name","Pizza Quantity"};
-    private static DefaultTableModel dTableModel = new DefaultTableModel(databaseResults,columns);
+    private static Object[] columns = {"ID","Order Number","Client Number","Pizza Name","Pizza Quantity","Date"};
+
+    //this method override to keep distinct data format
+    //that later will be use for sorting data in JTable
+    private static DefaultTableModel dTableModel = new DefaultTableModel(databaseResults,columns)
+    {
+        public Class getColumnClass(int column){
+            Class returnValue;
+
+            if(column >= 0 && column < getColumnCount()){
+                returnValue = getValueAt(0,column).getClass();
+            }else{
+                returnValue = Object.class;
+            }
+            return returnValue;
+        }
+    };
+
+
     private static JTable table = new JTable(dTableModel);
 
 
     JTableForResults(){
-        String url = "jdbc:mysql://localhost/pizzeria?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String url = "jdbc:mysql://localhost/pizzeria?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String uname = "root";
         String pass = "1234";
 
@@ -41,7 +59,8 @@ class JTableForResults extends JFrame {
                         rows.getInt(2),
                         rows.getInt(3),
                         rows.getString(4),
-                        rows.getInt(5)
+                        rows.getInt(5),
+                        rows.getDate(6)
                 };
                 dTableModel.addRow(tempRow);
             }
@@ -91,7 +110,7 @@ class JTableForResults extends JFrame {
         JScrollPane jScrollPane = new JScrollPane(table);
 
         frame.add(jScrollPane,BorderLayout.CENTER);
-        frame.setSize(800,500);
+        frame.setSize(1200,500);
         frame.setVisible(true);
     }//End of Constructor
 
